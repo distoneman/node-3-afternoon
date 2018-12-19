@@ -5,7 +5,7 @@ const checkForSession = require('./middlewares/checkForSession.js')
 const swagCtrl = require('./controllers/swag_controller.js')
 const authCtrl = require('./controllers/auth_controller.js')
 const cartCtrl = require('./controllers/cart_controller.js')
-
+const searchCtrl = require('./controllers/search_controller.js')
 
 const { SERVER_PORT, SESSION_SECRET } = process.env;
 
@@ -33,5 +33,8 @@ app.get('/api/user', authCtrl.getUser);
 app.post('/api/cart', cartCtrl.add)
 app.post('/api/cart/checkout', cartCtrl.checkout)
 app.delete('/api/cart', cartCtrl.remove)
+
+//search
+app.get('/api/search', searchCtrl.search)
 
 app.listen(SERVER_PORT, console.log(`Server listening on port ${SERVER_PORT}`))
